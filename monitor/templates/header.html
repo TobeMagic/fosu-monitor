@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}数学与大数据学院学工管理平台{% endblock %}</title>
+    {% load bootstrap4 %}
+{#    {% bootstrap_css %}#}
+{#    {% bootstrap_javascript jquery='full' %}#}
+        <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap.min.js' %}">
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link href="https://cdn.staticfile.org/font-awesome/5.2.0/css/all.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/popper.js/1.14.3/umd/popper.min.js.map">
+{#    <link href="{% static 'tailwind.min.css' %}" rel="stylesheet">#}
+    <link href="https://cdn.staticfile.org/tailwindcss/2.1.1/tailwind.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        a:hover{
+            text-decoration:none;
+            color: black;
+        }
+    </style>
+
+<!-- 伸缩侧边栏
+<script>
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("#left_menu").hide(500);
+  });
+  $("#show").click(function(){
+    $("#left_menu").show(500);
+  });
+});
+</script>
+-->
+</head>
+{% include 'message-alert-content.html.html' %}
+
+

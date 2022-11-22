@@ -1,0 +1,76 @@
+version: "3"
+
+services:
+  app:
+    restart: always
+    build: .
+    command: bash -c "python3 manage.py collectstatic --no-input && python3 manage.py migrate && gunicorn --timeout=30 --workers=4 --bind :9000 Bigdata.wsgi:application"
+    volumes:
+      - .:/code
+      - static-volume:/code/static
+    expose:
+      - "9000"
+    depends_on:
+      - db
+      - chrome
+    networks:
+      - web_network
+      - db_network
+  db:
+    image: mysql:5.7
+    volumes:
+      - "./mysql:/var/lib/mysql"
+      - "./config/mysql/Bigdata.cnf:/etc/mysql/conf.d/mysql.cnf"
+    ports:
+      - "3309:3306"
+    restart: always
+    command: "mysqld --user=root --explicit_defaults_for_timestamp --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci"
+    environment:
+      - MYSQL_ROOT_PASSWORD=BigData@2021
+      - MYSQL_DATABASE=Monitor
+    networks:
+      - db_network
+  chrome:
+    image: selenium/node-chrome:4.3.0-20220726
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    networks:
+      - db_network
+
+  selenium-hub:
+      image: selenium/hub:4.3.0-20220726
+      container_name: selenium-hub
+      ports:
+#        - "4442:4442"
+#        - "4443:4443"
+#        - "4444:4444"
+        - "9000:4444"
+      networks:
+        - db_network
+
+  nginx:
+    restart: always
+    image: nginx:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      - static-volume:/code/static
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - web_network
+
+networks:
+  web_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  static-volume:
