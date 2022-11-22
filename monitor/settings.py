@@ -16,6 +16,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# sys.path是Python的搜索模块的路径集(添加apps搜索路径）
+sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -28,18 +30,23 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
+    'django_apscheduler',
+    'Visualization',
+    'Weibo',
+    'Tieba'
 ]
-SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +79,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'monitor.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -115,18 +121,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
 USE_I18N = True
-
-USE_TZ = True
-
+USE_L10N = True
+USE_TZ = False  # 时间不准问题 不为UTC
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -134,7 +136,67 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")  # 使用 collectstatic后收集的静态文件的存放绝对路径
 
+# MEDIA files (upload or download images)
+
+MEDIA_URL = '/appendix/'
+# 设置上传文件的路径
+MEDIA_ROOT = os.path.join(BASE_DIR, 'appendix')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# log 日志记录
+LOGGING = {
+    'version': 1,  # 必须
+    "disable_existing_loggers": False,  # 不允许其他日志同时记录
+    'handlers': {
+        'console': {  # handler 名称（表示控制台输出）
+            "class": "logging.StreamHandler",  # 在控制台流 类
+            'formatter': 'simple',
+            'level': 'DEBUG'
+        },
+        'file': {  # handler 名称 (表示文件输出）
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',  # 文件流类
+            'formatter': 'simple',
+            # 得到完整路径并拼接
+            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
+        },
+        'performance_file': {
+            'formatter': 'simple',
+            'level': 'DEBUG',
+            'filename': os.path.join(BASE_DIR, 'logs/performance.log'),
+            'class': 'logging.FileHandler'
+        }
+    },
+    'formatters': {
+        # simple 类
+        'simple': {
+            'format': '%(asctime)s , %(name)s [ %(levelname)s ] %(message)s',
+        }
+    },
+
+    # 根日志记录器（父记录器）默认记录器，如果没有
+    'root': {
+        'handlers': ['file', 'console'],  # 记录到文件和控制台中
+        'level': 'INFO',  # 默认值为 warn
+    },
+    'loggers': {
+        # 默认使用loggers 没有指定则使用root
+        # django 默认记录器
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # 与logger名字一样
+        'interview.performance': {
+            'handlers': ['console', 'performance_file'],
+            'propagate': False,
+            'level': 'INFO',
+        }
+    }
+}
