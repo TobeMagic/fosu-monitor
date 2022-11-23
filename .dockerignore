@@ -1,0 +1,4 @@
+.git
+settings/local.py
+db.sqlite3
+**/__pycache__

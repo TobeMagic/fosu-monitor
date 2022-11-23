@@ -1,0 +1,207 @@
+{% extends 'base_html.html' %}
+{% block content %}
+    <div class="flex items-center justify-center">
+        <div class="grid grid-cols-1 gap-2 md:gap-16 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 md:mt-16">
+            <!--<div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+            <div class="mt-2 text-center">
+                <p class="text-xl font-semibold mt-2 mb-4">请假</p>
+                <div class="border-t-2 mb-10"></div>
+                <div onclick="location.href='/ask_for_leave/add/?username={{ user_profile.name }}'">
+                    <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-calendar"></span></div>
+                        <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">我要请假</p>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="location.href='/ask_for_leave/'">
+                    <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                    <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-history"></span></div>
+                    <div class="flex flex-col justify-center ">
+                      <p class="dark:text-gray-300 font-semibold text-xl">请假记录</p>
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>-->
+            <div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">查寝</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='/checkdorm/add'">
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span
+                                    class="fa fa-bed"></span></div>
+                            <div class="flex flex-col justify-center ">
+                                <p class="dark:text-gray-300 font-semibold text-xl">提交查寝信息</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick="location.href='/checkdorm/'">
+                        <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span
+                                    class="fa fa-history"></span></div>
+                            <div class="flex flex-col justify-center ">
+                                <p class="dark:text-gray-300 font-semibold text-xl">查寝提交记录</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">党史学习</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='/partyhistorystudy/add'">
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-book"></span></div>
+                      <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">提交学习记录</p>
+                      </div>
+                    </div>
+                    </div>
+                    <div onclick="location.href='/partyhistorystudy/'">
+                        <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-history"></span></div>
+                        <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">查看提交记录</p>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">学习打卡</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='{% url 'check_history_add' %}'">
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span
+                                    class="fa fa-book"></span></div>
+                            <div class="flex flex-col justify-center ">
+                                <p class="dark:text-gray-300 font-semibold text-xl">学习打卡</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick="location.href='{% url 'check_history_list' %}'">
+                        <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span
+                                    class="fa fa-history"></span></div>
+                            <div class="flex flex-col justify-center ">
+                                <p class="dark:text-gray-300 font-semibold text-xl">历史打卡记录</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">Keep</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='{% url "check_keep_add" %}'">
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                           <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-book"></span></div>
+                      <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">Keep打卡</p>
+                      </div>
+                    </div>
+                    </div>
+                    <div onclick="location.href='{% url 'check_keep_form_list' %}'">
+                        <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-history"></span></div>
+                        <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">Keep打卡记录</p>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">体测</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='{ url 'score_list' %}'">
+                    //注释后django还会继续载入，应该删除一个符号，不让django能识别
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-book"></span></div>
+                      <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">查看体测信息</p>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">青年大学习</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='{% url 'unstudy' %}'">
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span
+                                    class="fa fa-book"></span></div>
+                            <div class="flex flex-col justify-center ">
+                                <p class="dark:text-gray-300 font-semibold text-xl">查看未学习名单</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick="location.href='{% url 'not_study_mass' %}'">
+                        <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span
+                                    class="fa fa-book"></span></div>
+                            <div class="flex flex-col justify-center ">
+                                <p class="dark:text-gray-300 font-semibold text-xl">查看未学习名单(群众)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">舆情监测</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='{% url 'monitor:wordcloud_show' %}'">
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span
+                                    class="fa fa-book"></span></div>
+                            <div class="flex flex-col justify-center ">
+                                <p class="dark:text-gray-300 font-semibold text-xl">每周词云</p>
+                            </div>
+                        </div>
+                    </div>
+{#                    <div onclick="location.href='{% url 'check_history_list' %}'">#}
+{#                        <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">#}
+{#                            <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span#}
+{#                                    class="fa fa-history"></span></div>#}
+{#                            <div class="flex flex-col justify-center ">#}
+{#                                <p class="dark:text-gray-300 font-semibold text-xl">历史打卡记录</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+                </div>
+            </div>
+            <!--<div class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                <div class="mt-2 text-center">
+                    <p class="text-xl font-semibold mt-2 mb-4">活动签到请假</p>
+                    <div class="border-t-2 mb-10"></div>
+                    <div onclick="location.href='{ % url 'checkin' %}'">
+                        <div class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-book"></span></div>
+                      <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">签到/请假</p>
+                      </div>
+                    </div>
+                    </div>
+                    <div onclick="location.href='{ % url 'HistoryCheckInList' %}'">
+                        <div class="mt-4 bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-2 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500 hover:text-white">
+                        <div class="w-10 h-10 md:w-14 md:h-14 object-cover text-4xl md:pt-2"><span class="fa fa-history"></span></div>
+                        <div class="flex flex-col justify-center ">
+                          <p class="dark:text-gray-300 font-semibold text-xl">往期记录</p>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+{% endblock %}

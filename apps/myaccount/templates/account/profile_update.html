@@ -1,0 +1,30 @@
+{% extends 'base_html.html' %}
+{% block content %}
+<div class="pt-2 pb-10 overflow-hidden overflow-y-auto overflow-x-auto container">
+    <div class="align-middle inline-block min-w-full shadow bg-white shadow-dashboard px-8 pt-3 rounded-md">
+    <div class="row justify-content-center">
+        <h3 class="text-2xl mt-8 mb-8">更新个人信息</h3>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8 ">
+            <form method="post" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+              {% for field in form %}
+                  <div class="form-group">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                     <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+               </div>
+              {% endfor %}
+              <div class="my-10">
+                  <input type="submit" class="btn btn-block " value="更新" style="background-color: #40739e;color: white"/>
+              </div>
+           </form>
+        </div>
+    </div>
+
+    </div>
+</div>
+{% endblock %}

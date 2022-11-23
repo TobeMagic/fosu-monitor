@@ -14,10 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from Tieba import views
-from Weibo import views
+from django.urls import path, include
+
+# from Tieba import views
+# from Weibo import views
 
 urlpatterns = [
     path('', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
 ]
+
+admin.site.site_header = "佛山科学技术学院舆情监测平台"
+admin.site.site_title = "佛山科学技术学院舆情监测平台"
+admin.site.index_title = "欢迎进入佛山科学技术学院舆情监测平台"

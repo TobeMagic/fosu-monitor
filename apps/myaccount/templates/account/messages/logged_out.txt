@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans %}您已经成功退出{% endblocktrans %}

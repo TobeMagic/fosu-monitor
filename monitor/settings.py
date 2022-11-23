@@ -44,9 +44,31 @@ INSTALLED_APPS = [
     'django_apscheduler',
     'Visualization',
     'Weibo',
-    'Tieba'
+    'Tieba',
+    'myaccount',
+    'Settings',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+SITE_ID = 1
 
+# simpleUI 主题配置
+SIMPLEUI_DEFAULT_THEME = 'e-red.css'
+SIMPLEUI_LOGO = 'https://avatars2.githubusercontent.com/u/13655483?s=60&v=4'
+SIMPLEUI_ICON = {
+    '微博': 'fa fa-comment',
+    '贴吧': 'fa fa-comments',
+    '学生信息': 'fas fa-user-tie',
+}
+LANGUAGE_CODE = 'zh-hans'  # 语言设置
+SIMPLEUI_HOME_ACTION = False  # 最近行为
+SIMPLEUI_HOME_INFO = False  # github信息
+SIMPLEUI_ANALYSIS = False  # 使用分析
+SIMPLEUI_HOME_PAGE = 'http://maths.fosu.edu.cn/wordcloud/'  # 指向页面
+SIMPLEUI_HOME_TITLE = '每周词云'  # 首页标题
+SIMPLEUI_HOME_ICON = 'fa fa-cloud'  # 首页图标
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,25 +105,25 @@ WSGI_APPLICATION = 'monitor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# 部署用数据库配置
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'Monitor',
-#         'USER': 'root',
-#         'PASSWORD': 'BigData@2021',
-#         'HOST': 'db',
-#         'PORT': '3306',
-#         'OPTIONS': {'charset': 'utf8mb4'},
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+# 部署用数据库配置
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Monitor',
+        'USER': 'root',
+        'PASSWORD': 'Monitor@2022',
+        'HOST': 'db',
+        'PORT': '3306',
+        'OPTIONS': {'charset': 'utf8mb4'},
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -146,7 +168,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'appendix')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 # log 日志记录
 LOGGING = {

@@ -468,6 +468,6 @@ def run():
     # password = '123456buzhi'
     driver.get('https://m.weibo.cn')
     driver.implicitly_wait(2)  # 隐式等待2秒
-    login(driver, username, password, 'apps/monitor/wb_cookie.txt')
+    login(driver, username, password, 'apps/Weibo/wb_cookie.txt')
     spider(driver, 100)
     driver.quit()
