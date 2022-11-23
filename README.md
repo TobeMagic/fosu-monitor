@@ -17,4 +17,6 @@
  - [x] 微博
 - [x] 贴吧
 
+admin主题： `simpleUI`
+>注意适配 `fontawesome` 的图标版本为 4
 
