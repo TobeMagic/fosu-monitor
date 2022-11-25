@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     b.学号
     c.班级
     d.性别
-    e.身份证
+    e.身份证后八位
     """
     def __init__(self, *args, **kwargs):
         super(UserProfile, self).__init__(*args, **kwargs)

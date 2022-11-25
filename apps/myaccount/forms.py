@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django import forms
 from myaccount.models import UserProfile
 
-# from allauth.account.forms import ResetPasswordForm
 
 from myaccount.models import GENDER_TYPES
 from Settings.models import ClassType

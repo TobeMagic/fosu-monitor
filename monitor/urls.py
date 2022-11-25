@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-# from Tieba import views
-# from Weibo import views
+from myaccount.views import CustomPasswordResetView
+from Tieba import views
+from Weibo import views
 
 urlpatterns = [
     path('', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    path('accounts/password/reset/', CustomPasswordResetView.as_view()),
+    # path('accounts/', include('allauth.urls')),
+    path('accounts/', include('myaccount.urls')),
 ]
 
 admin.site.site_header = "佛山科学技术学院舆情监测平台"

@@ -18,14 +18,6 @@ from allauth.account.forms import default_token_generator
 from allauth.account.views import PasswordResetView
 
 
-@login_required
-def profile(request):
-    user = request.user
-    user_profile = get_object_or_404(UserProfile, user=user)
-
-    return render(request, 'account/profile.html',
-                  {'user': user, 'user_profile': user_profile})
-
 
 @login_required
 def profile_update(request):
@@ -46,22 +38,17 @@ def profile_update(request):
             user_profile.telephone = form.cleaned_data['telephone']
             user_profile.classes = form.cleaned_data['classes']
             user_profile.gender = form.cleaned_data['gender']
-            # user_profile.grade = form.cleaned_data['grade']
             user_profile.save()
             messages.add_message(request, messages.SUCCESS, '个人信息更新成功！')
             return HttpResponseRedirect(reverse('myaccount:profile'))
     else:
         default_data = {
-            # 'first_name': user.first_name,
-            # 'last_name': user.last_name,
             'identity_card': user_profile.identity_card,
             'telephone': user_profile.telephone,
             'classes': user_profile.classes,
             'gender': user_profile.gender,
             'name':user_profile.name,
-            # 'grade':user_profile.grade,
         }
-
         form = ProfileForm(default_data)
 
     return render(request, 'account/profile_update.html',

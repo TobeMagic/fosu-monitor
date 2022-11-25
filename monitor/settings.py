@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Tieba',
     'myaccount',
     'Settings',
+    'widget_tweaks',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -56,7 +57,7 @@ SITE_ID = 1
 
 # simpleUI 主题配置
 SIMPLEUI_DEFAULT_THEME = 'e-red.css'
-SIMPLEUI_LOGO = 'https://avatars2.githubusercontent.com/u/13655483?s=60&v=4'
+SIMPLEUI_LOGO = 'https://hakaimg.com/i/2022/11/25/4up8oj2.png'
 SIMPLEUI_ICON = {
     '微博': 'fa fa-comment',
     '贴吧': 'fa fa-comments',
@@ -69,6 +70,22 @@ SIMPLEUI_ANALYSIS = False  # 使用分析
 SIMPLEUI_HOME_PAGE = 'http://maths.fosu.edu.cn/wordcloud/'  # 指向页面
 SIMPLEUI_HOME_TITLE = '每周词云'  # 首页标题
 SIMPLEUI_HOME_ICON = 'fa fa-cloud'  # 首页图标
+SIMPLEUI_INDEX = '/account/profile/update'
+# allauth 配置
+# 基本设定
+ACCOUNT_AUTHENTICATION_METHOD = 'username'  # 验证用户名
+ACCOUNT_EMAIL_REQUIRED = False  # 不需要邮箱
+LOGIN_REDIRECT_URL = '/'  # 登录跳转链接
+ACCOUNT_LOGOUT_ON_GET = True  # 用户登出确认
+ACCOUNT_SIGNUP_FORM_CLASS = None  # 注册表单
+ACCOUNT_FORMS = ({
+    'reset_password': 'myaccount.forms.ResetPasswordForm',  # 重置密码表单
+})
+# 验证后端
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -105,25 +122,25 @@ WSGI_APPLICATION = 'monitor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# 部署用数据库配置
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Monitor',
-        'USER': 'root',
-        'PASSWORD': 'Monitor@2022',
-        'HOST': 'db',
-        'PORT': '3306',
-        'OPTIONS': {'charset': 'utf8mb4'},
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# 部署用数据库配置
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Monitor',
+#         'USER': 'root',
+#         'PASSWORD': 'Monitor@2022',
+#         'HOST': 'db',
+#         'PORT': '3306',
+#         'OPTIONS': {'charset': 'utf8mb4'},
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

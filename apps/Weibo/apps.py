@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 
 
-class WechatConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
+class WeiboConfig(AppConfig):
     name = 'Weibo'
-    verbose_name = "微博"
+    verbose_name = '微博'
