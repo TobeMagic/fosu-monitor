@@ -306,7 +306,7 @@ def code_login(driver, username, password, cookies_file):
     time.sleep(2)
 
     # 点击激活
-    driver.find_element_by_xpath('//*[@id="protectGuide"]/div/div/div[3]/a').click()
+    # driver.find_element_by_xpath('//*[@id="protectGuide"]/div/div/div[3]/a').click()
     time.sleep(3)
     driver.find_element_by_xpath('//*[@id="vdVerify"]/div[1]/div/div/div[3]/a').click()
     # 先获取一次验证码接口，清除可能存在的旧验证码
@@ -360,6 +360,7 @@ def login(driver, username, password, cookies_file):
             # print("cookie失效，启用短信登录")
             code_login(driver, username, password, cookies_file)
         time.sleep(2)
+
 
 def spider(driver, num):
     try:
@@ -460,7 +461,7 @@ def run():
     ua = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
     opt.add_argument("user-agent=" + ua)
     # driver = webdriver.Chrome(options=opt)  # 本地 你的chromedriver的地址
-    driver = webdriver.Remote(command_executor='http://selenium-hub:4444/wd/hub', options=opt)# 服务器设置
+    driver = webdriver.Remote(command_executor='http://selenium-hub:4444/wd/hub', options=opt)  # 服务器设置
     # 爬取
     username = '19965440781'
     password = 'buzhi123456'
