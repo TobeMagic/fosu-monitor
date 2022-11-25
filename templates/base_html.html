@@ -3,7 +3,7 @@
 <body style="width: 100%" class="bg-gray-50">
 <main class="bg-white dark:bg-gray-800 h-screen overflow-hidden relative relative flex flex-col ">
     <div class="flex items-start justify-between overflow-hidden bg-gray-100">
-    <!-- 侧边栏
+{#    侧边栏#}
         <div id='left_menu' class="h-screen hidden lg:block ml-0 shadow-lg relative w-80 mr-2 bg-gray-100 rounded-tr-2xl rounded-br-2xl" style="display: none">
             <div class="h-full rounded-tr-2xl rounded-br-2xl dark:bg-gray-700 overflow-auto" style="background-color: #40739e">
                 <div class="flex items-center justify-center pt-6">
@@ -51,7 +51,7 @@
                 </nav>
             </div>
         </div>
-     -->
+
         <div class="flex flex-col w-full pl-0 md:p-1 md:space-y-4 justify-between h-screen ">
             <header class="w-full shadow-md dark:bg-gray-700 items-center h-16 rounded-2xl z-40 relative" style="background-color: #40739e">
                 <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
@@ -59,15 +59,8 @@
                         <div class="dropdown text-white">
                           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false" id="dropdownMenuButton"></a>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <!--
-                              <a class="dropdown-item" href='/ask_for_leave/add/?username={{ user_profile.name }}'>我要请假</a>
-                              <a class="dropdown-item" href='/ask_for_leave/'>请假记录</a> -->
                               <a class="dropdown-item" href='/checkdorm/add'>提交查寝信息</a>
                               <a class="dropdown-item" href='/checkdorm/'>查寝提交记录</a>
-{#                              <a class="dropdown-item" href='/partyhistorystudy/add'>提交党史学习记录</a>#}
-{#                              <a class="dropdown-item" href='/partyhistorystudy/'>查看党史提交记录</a>#}
-{#                              <a class="dropdown-item" href='{% url 'check_keep_add' %}'>Keep打卡</a>#}
-{#                              <a class="dropdown-item" href='{% url 'check_keep_form_list' %}'>Keep打卡记录</a>#}
                           </div>
                         </div>
                     </div>
@@ -77,7 +70,7 @@
                         <a class="fa fa-minus text-white absolute left-14 hidden md:block"  id="hide" aria-hidden="true"></a>
                         -->
                             <nav>
-                            <a href="{% url 'myaccount:profile' %}"
+                            <a href="/" target="_self"
                                 class="hover:bg-gray-600 rounded-lg inline-block text-sm font-medium text-white px-2 md:mx-8 py-2 leading-none">首页</a>
                             <a  href="{% url 'myaccount:profile_update' %}"
                                 class="hover:bg-gray-600 rounded-lg inline-block text-sm font-medium text-white px-2 md:mx-8 py-2 leading-none">更新个人信息</a>

@@ -1,179 +1,81 @@
-<!DOCTYPE html>
-{% load i18n static simpletags %}
-{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
-<!--
-   The project use: django-simpleui
-   source code：
-   https://github.com/newpanjing/simpleui
--->
-<html lang="{{ LANGUAGE_CODE|default:" en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
-<head>
-    <meta charset="UTF-8">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    {% block title %}
-        <title>{{ site_title }}-{% trans 'Log in' %}</title>
-    {% endblock %}
-    {% block icon %}
-        <link rel="icon" href="{% static 'account/images/favicon.png' %}">
-    {% endblock %}
-
-    {% include 'admin/includes/css-part.html' %}
-
-    {% block css %}
-        <link rel="stylesheet" href="{% static 'admin/simpleui-x/css/login.css' %}?_=2.1">
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
-    {% endblock %}
-    {% block bg %}
-        <style type="text/css">
-            .bg {
-                background: #f0f2f5;
-                background-image: url('{% static 'admin/simpleui-x/img/bg.svg' %}');
-                min-height: 100%;
-                background-repeat: no-repeat;
-                background-position: 50%;
-                background-size: 100%;
-                padding: 20px 0;
-                position: relative;
-            }
-
-        </style>
-    {% endblock %}
-
-    {% block head %}
-        {# You can add code here. #}
-    {% endblock %}
-</head>
-<body class="bg">
-{% block main %}
-{#    <div class="login-main">#}
-{#    {% block logo %}#}
-{#        <div class="logo flex justify-center">#}
-{#            {% if "SIMPLEUI_LOGO"|get_config %}#}
-{#                <!--	引号内容不要有空格，不然无法找到图片	-->#}
-{#                <img src="{{ "SIMPLEUI_LOGO"|get_config |safe }}">#}
-{#            {% else %}#}
-{#                <img src="{% static 'admin/simpleui-x/img/logo.png' %}">#}
-{#            {% endif %}#}
-{#        </div>#}
-{#    {% endblock %}#}
-
-    {% block header %}
-        <div class="header">{{ site_header }}</div>
-    {% endblock %}
+{% include 'header.html' %}
+{% load bootstrap4 %}
+{% load widget_tweaks %}
+{% bootstrap_form_errors form %}
+<section class="h-full gradient-form bg-gray-200 md:h-screen">
+    <div class="container py-12 px-6 h-full">
+        <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
+            <div class="xl:w-10/12">
+                <div class="block bg-white shadow-lg rounded-lg">
+                    <div class="lg:flex lg:flex-wrap g-0">
+                        <div class="lg:w-6/12 px-4 md:px-0">
+                            <div class="md:p-12 md:mx-6">
+                                <div class="text-center">
+                               
+                                     <h4 class=" text-3xl font-semibold mt-1 mb-12 pb-1">网络舆情分析系统</h4>
+                                </div>
+                                <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+                                    <div class="form-row mb-4">
+                                        {{ form.username.errors }}
+                                        学号
+                                        {% render_field form.username class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %}
 
 
-    {% block form %}
-        <div class="font-sans">
-        <div class="relative sm:max-w-sm w-full">
-            <div class="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
-            <div class="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
-            <div class="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
-                <label for="input_username" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
-                    欢迎你！魔法师
-                </label>
-                <form action="{{ app_path }}" method="post" id="login-form" class="mt-10">
-                    {% csrf_token %}
-                    <div class="simpleui-input-inline">
-                        <el-input prefix-icon="fas fa-user" v-model="username" name="username"
-                                  placeholder="{% trans 'username' %}" autofocus id="input_username"></el-input>
-                    </div>
-                    <div class="simpleui-input-inline">
-                        <el-input prefix-icon="fas fa-lock" type="password" v-model="password" name="password"
-                                  @keyup.enter.native="login()"
-                                  placeholder="{% trans 'password' %}" show-password></el-input>
-                    </div>
-                    {% url 'admin_password_reset' as password_reset_url %}
-                    {% if password_reset_url %}
 
-                        <div class="password-reset-link">
-                            <a class="forgot-password"
-                               href="{{ password_reset_url }}">{% trans 'Forgotten your password or
-                                username?' %}</a>
+                                    </div>
+                                    <div class="form-row mb-4">
+                                        {{ form.password.errors }}
+                                        密码 
+                                        <input type="hidden" name="next" value="{{ next }}">
+                                        {% render_field form.password class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %}
+                                    </div>
+                                    <div class="flex justify-between items-center mb-6">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox"
+                                                class="form-check-input   h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-red-600 checked:border-red-600  transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                                id="check" checked />
+                                            <label class="form-check-label inline-block text-gray-800"
+                                                for="check">记住密码</label>
+
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <a href="{% url 'account_reset_password' %}" class=" hover:text-red-700 ">忘记密码?</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center pt-1 mb-12 pb-1">
+                                        <button
+                                            class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                                            type="submit" data-mdb-ripple="true" data-mdb-ripple-color="light" style="
+                        background: linear-gradient(
+                          to right,
+                          #ee7724,
+                          #d8363a,
+                          #dd3675,
+                          #b44593
+                        );
+                      ">
+                                            登录
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    {% endif %}
-                    <div class="mt-7">
-                        <button class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-                            {% trans 'Log in' %}
-                        </button>
+                        <div class="lg:w-6/12  lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none text-white" style="
+                background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);position:relative
+              ">
+                            <div class=" px-4 py-6 md:p-12 md:mx-6 flex  justify-center flex-column" >
+                                <img class="mx-auto w-48" src="https://hakaimg.com/i/2022/11/25/imlrze.png"
+                                alt="logo" />
+                                <p class="text-3xl font-semibold mb-6 flex  justify-center align-bewteen">学习贯彻二十大，思想引领向未来</p>
+                            </div>
+                            <span class="text-sm" style="position:absolute;left:48px;bottom:118px;">
+                                提示：密码默认为身份证后八位
+                            </span>
+                        </div>
                     </div>
-                    <input type="hidden" name="next" value="{{ next }}"/>
-                </form>
+                </div>
             </div>
         </div>
-    {% endblock %}
-{% block errors %}
-    {% if form.non_field_errors %}
-        {% for error in form.non_field_errors %}
-            <el-alert
-                    title="{{ error }}"
-                    type="error">
-            </el-alert>
-        {% endfor %}
-    {% endif %}
-    {% if form.errors and not form.non_field_errors %}
-        <p class="errornote">
-            {% if form.errors.items|length == 1 %}
-                <el-alert title="{% trans " Please correct the error below." %}" type="error"></el-alert>
-            {% else %}
-                <el-alert title="{% trans " Please correct the errors below." %}" type="error"></el-alert>
-            {% endif %}
-        </p>
-    {% endif %}
-{% endblock %}
-</div>
-{% endblock %}
-{% include 'admin/includes/js-part.html' %}
-{% block login_js %}
-    <script type="text/javascript" src="{% static 'admin/simpleui-x/js/login.js' %}?_=3.3"></script>
-{% endblock %}
-
-{% block particles %}
-    {% if 'SIMPLEUI_LOGIN_PARTICLES'|get_config != False %}
-        <!--
-            Close login page particles see link:
-            关闭登录页粒子动画请查看：
-            https://github.com/newpanjing/simpleui/blob/master/QUICK.md#关闭登录页粒子动画
-        -->
-        <style type="text/css">
-            #particles-js {
-                position: fixed;
-                top: 0px;
-                left: 0px;
-                right: 0px;
-                bottom: 0px;
-                z-index: -1;
-            }
-
-            .forgot-password {
-                margin-top: 10px;
-                color: #3a8ee6;
-                text-decoration: none;
-
-            &
-            :hover,
-
-            &
-            :active,
-
-            &
-            :focus {
-                color: lighten($ teal, 7);
-            }
-
-            }
-
-        </style>
-        <!-- particles.js container -->
-        <div id="particles-js"></div>
-        <script type="text/javascript" src="{% static 'admin/simpleui-x/particles/particles.js' %}"></script>
-        <script type="text/javascript" src="{% static 'admin/simpleui-x/particles/app.js' %}"></script>
-    {% endif %}
-
-
-{% endblock %}
-
-</body>
-</html>
+            {% include 'footer.html' %}
+    </div>
+</section>

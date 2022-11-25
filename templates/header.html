@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}数学与大数据学院学工管理平台{% endblock %}</title>
+    <title>{% block title %}舆情监测平台{% endblock %}</title>
     {% load bootstrap4 %}
 {#    {% bootstrap_css %}#}
 {#    {% bootstrap_javascript jquery='full' %}#}
         <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
       <link rel="stylesheet" href="{% static 'bootstrap.min.js' %}">
 
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+{#    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>#}
+    <link rel="shortcut icon" type="image/png" href="https://hakaimg.com/i/2022/11/25/imlrze.png"/>
     <link href="https://cdn.staticfile.org/font-awesome/5.2.0/css/all.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/popper.js/1.14.3/umd/popper.min.js.map">
 {#    <link href="{% static 'tailwind.min.css' %}" rel="stylesheet">#}
@@ -39,6 +40,6 @@ $(document).ready(function(){
 </script>
 -->
 </head>
-{% include 'message-alert-content.html.html' %}
+{% include 'message-alert-content.html' %}
 
 
