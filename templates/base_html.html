@@ -3,72 +3,12 @@
 <body style="width: 100%" class="bg-gray-50">
 <main class="bg-white dark:bg-gray-800 h-screen overflow-hidden relative relative flex flex-col ">
     <div class="flex items-start justify-between overflow-hidden bg-gray-100">
-{#    侧边栏#}
-        <div id='left_menu' class="h-screen hidden lg:block ml-0 shadow-lg relative w-80 mr-2 bg-gray-100 rounded-tr-2xl rounded-br-2xl" style="display: none">
-            <div class="h-full rounded-tr-2xl rounded-br-2xl dark:bg-gray-700 overflow-auto" style="background-color: #40739e">
-                <div class="flex items-center justify-center pt-6">
-                    <span class="text-2xl font-semibold text-white">欢迎您,{{ request.user.first_name }}！</span>
-                </div>
-                <nav class="mt-6">
-                    <div>
-                        <a class="hover:bg-gray-600 w-full font-thin uppercase text-white dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start"
-                           href='/ask_for_leave/add/?username={{ user_profile.name }}'>
-                            <span class="mx-4 text-sm md:text-base font-medium">
-                                我要请假
-                            </span>
-                        </a>
-                        <a class="hover:bg-gray-600 w-full font-thin uppercase text-white dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start"
-                           href='/ask_for_leave/'>
-                            <span class="mx-4 text-sm md:text-base font-medium">
-                                请假记录
-                            </span>
-                        </a>
-                        <a class="hover:bg-gray-600 w-full font-thin uppercase text-white dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start"
-                           href='/checkdorm/add'>
-                            <span class="mx-4 text-sm md:text-base font-medium">
-                                提交查寝信息
-                            </span>
-                        </a>
-                        <a class="hover:bg-gray-600 w-full font-thin uppercase text-white dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start"
-                           href='/checkdorm/'>
-                            <span class="mx-4 text-sm md:text-base font-medium">
-                                查寝提交记录
-                            </span>
-                        </a>
-                        <a class="hover:bg-gray-600 w-full font-thin uppercase text-white dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start"
-                           href='/partyhistorystudy/add'>
-                            <span class="mx-4 text-sm md:text-base font-medium">
-                                提交党史学习记录
-                            </span>
-                        </a>
-                        <a class="hover:bg-gray-600 w-full font-thin uppercase text-white dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start"
-                           href='/partyhistorystudy/'>
-                            <span class="mx-4 text-sm md:text-base font-medium">
-                                查看党史提交记录
-                            </span>
-                        </a>
-                    </div>
-                </nav>
-            </div>
-        </div>
+
 
         <div class="flex flex-col w-full pl-0 md:p-1 md:space-y-4 justify-between h-screen ">
-            <header class="w-full shadow-md dark:bg-gray-700 items-center h-16 rounded-2xl z-40 relative" style="background-color: #40739e">
+            <header class="w-full shadow-md dark:bg-gray-700 items-center h-16 rounded-2xl z-40 relative" style="background-color: #dd4336">
                 <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
-                    <div class="absolute left-2 md:hidden "> <!-- 手机的下拉功能 -->
-                        <div class="dropdown text-white">
-                          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false" id="dropdownMenuButton"></a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href='/checkdorm/add'>提交查寝信息</a>
-                              <a class="dropdown-item" href='/checkdorm/'>查寝提交记录</a>
-                          </div>
-                        </div>
-                    </div>
                     <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0 justify-center">
-                        <!-- 显示隐藏侧边栏符号
-                        <a class="fa fa-plus text-white absolute left-8 hidden md:block"  id="show" aria-hidden="true"></a>
-                        <a class="fa fa-minus text-white absolute left-14 hidden md:block"  id="hide" aria-hidden="true"></a>
-                        -->
                             <nav>
                             <a href="/" target="_self"
                                 class="hover:bg-gray-600 rounded-lg inline-block text-sm font-medium text-white px-2 md:mx-8 py-2 leading-none">首页</a>

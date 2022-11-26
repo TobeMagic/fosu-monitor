@@ -7,6 +7,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8 ">
+{#        由于该表单页面采用的是post get 方式提交方法，提交默认提交本页面 #}
             <form method="post" action="" enctype="multipart/form-data">
               {% csrf_token %}
               {% for field in form %}
@@ -19,7 +20,7 @@
                </div>
               {% endfor %}
               <div class="my-10">
-                  <input type="submit" class="btn btn-block " value="更新" style="background-color: #40739e;color: white"/>
+                  <input type="submit" class="btn btn-block " value="更新" style="background-color: #dd4336;color: white"/>
               </div>
            </form>
         </div>

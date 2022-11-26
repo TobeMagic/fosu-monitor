@@ -1,8 +1,10 @@
+{% load static %}
 {% include 'header.html' %}
 {% load bootstrap4 %}
 {% load widget_tweaks %}
 {% bootstrap_form_errors form %}
-<section class="h-full gradient-form bg-gray-200 md:h-screen">
+<div class="wall-warp">
+<section class="h-full gradient-form md:h-screen flex justify-center">
     <div class="container py-12 px-6 h-full">
         <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div class="xl:w-10/12">
@@ -11,7 +13,7 @@
                         <div class="lg:w-6/12 px-4 md:px-0">
                             <div class="md:p-12 md:mx-6">
                                 <div class="text-center">
-                               
+
                                      <h4 class=" text-3xl font-semibold mt-1 mb-12 pb-1">网络舆情分析系统</h4>
                                 </div>
                                 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
@@ -25,7 +27,7 @@
                                     </div>
                                     <div class="form-row mb-4">
                                         {{ form.password.errors }}
-                                        密码 
+                                        密码
                                         <input type="hidden" name="next" value="{{ next }}">
                                         {% render_field form.password class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %}
                                     </div>
@@ -79,3 +81,14 @@
             {% include 'footer.html' %}
     </div>
 </section>
+
+</div>
+<style>
+    .wall-warp{
+        {#绝对定位#}
+        position:absolute;
+        width:100%;
+    }
+</style>
+<script src="{% static "three.min.js" %}" type="text/javascript"></script>
+<script src="{% static "wallbgcanvas.js" %}" type="text/javascript"></script>
