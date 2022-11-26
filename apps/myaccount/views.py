@@ -1,22 +1,20 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect,render, get_object_or_404
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 
-## user create
+# user create
 from myaccount.forms import ResetPasswordForm
 from myaccount.models import UserProfile
 from myaccount.forms import ProfileForm
 
-### allauth
+# allauth
 from allauth.utils import build_absolute_uri
 from allauth.account.utils import user_pk_to_url_str
 from allauth.account.forms import default_token_generator
 from allauth.account.views import PasswordResetView
-
 
 
 @login_required
@@ -40,14 +38,14 @@ def profile_update(request):
             user_profile.gender = form.cleaned_data['gender']
             user_profile.save()
             messages.add_message(request, messages.SUCCESS, '个人信息更新成功！')
-            return HttpResponseRedirect(reverse('myaccount:profile'))
+            return HttpResponseRedirect(reverse('myaccount:profile_update'))
     else:
         default_data = {
             'identity_card': user_profile.identity_card,
             'telephone': user_profile.telephone,
             'classes': user_profile.classes,
             'gender': user_profile.gender,
-            'name':user_profile.name,
+            'name': user_profile.name,
         }
         form = ProfileForm(default_data)
 
@@ -62,7 +60,7 @@ class CustomPasswordResetView(PasswordResetView):
         if reset_password_form.is_valid():
             # 取到学号和身份证之后取到用户对象
             username = reset_password_form.cleaned_data['username']
-            #identity_card = reset_password_form.cleaned_data['identity_card']
+            # identity_card = reset_password_form.cleaned_data['identity_card']
             user = User.objects.get(username=username)
             # 生成token
             token_generator = kwargs.get(

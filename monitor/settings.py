@@ -60,7 +60,9 @@ SIMPLEUI_DEFAULT_THEME = 'e-red.css'
 SIMPLEUI_LOGO = 'https://hakaimg.com/i/2022/11/25/4up8oj2.png'
 SIMPLEUI_ICON = {
     '微博': 'fa fa-comment',
+    'Weibo': 'fa fa-comment',
     '贴吧': 'fa fa-comments',
+    'Tieba': 'fa fa-comments',
     '学生信息': 'fas fa-user-tie',
 }
 LANGUAGE_CODE = 'zh-hans'  # 语言设置
@@ -70,14 +72,14 @@ SIMPLEUI_ANALYSIS = False  # 使用分析
 SIMPLEUI_HOME_PAGE = 'http://maths.fosu.edu.cn/wordcloud/'  # 指向页面
 SIMPLEUI_HOME_TITLE = '每周词云'  # 首页标题
 SIMPLEUI_HOME_ICON = 'fa fa-cloud'  # 首页图标
-SIMPLEUI_INDEX = '/account/profile/update'
+SIMPLEUI_INDEX = '/accounts/profile'
 # allauth 配置
 # 基本设定
 ACCOUNT_AUTHENTICATION_METHOD = 'username'  # 验证用户名
 ACCOUNT_EMAIL_REQUIRED = False  # 不需要邮箱
 LOGIN_REDIRECT_URL = '/'  # 登录跳转链接
 ACCOUNT_LOGOUT_ON_GET = True  # 用户登出确认
-ACCOUNT_SIGNUP_FORM_CLASS = None  # 注册表单
+# ACCOUNT_SIGNUP_FORM_CLASS = None  # 注册表单
 ACCOUNT_FORMS = ({
     'reset_password': 'myaccount.forms.ResetPasswordForm',  # 重置密码表单
 })

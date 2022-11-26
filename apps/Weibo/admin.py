@@ -24,6 +24,7 @@ class WeiboArticleAdmin(admin.ModelAdmin):
     inlines = [WeiboFirstCommentInline, WeiboSecondCommentInline]
     date_hierarchy = 'create_time'  # 根据创建时间划分等级
     ordering = ['-create_time', ]  # 默认按照最新时间排序
+    search_fields = ('username', 'article', 'create_time')  # 设置搜索栏范围，如果有外键，要注明外键的哪个字段，双下划线
 
     def url_tag(self, obj):
         if obj.art_links:
@@ -54,7 +55,7 @@ class WeiboFirstCommentAdmin(admin.ModelAdmin):
     list_display_links = ('username',)
     date_hierarchy = 'create_time'  # 根据创建时间划分等级
     ordering = ['-create_time', ]  # 默认按照最新时间排序
-    search_fields = ('username', 'context')  # 设置搜索栏范围，如果有外键，要注明外键的哪个字段，双下划线
+    search_fields = ('username', 'context', 'create_time')  # 设置搜索栏范围，如果有外键，要注明外键的哪个字段，双下划线
 
 
 @admin.register(WeiboSecondComment)
@@ -63,5 +64,5 @@ class WeiboSecondCommentAdmin(admin.ModelAdmin):
     readonly_fields = ['username', 'context', 'com']
     date_hierarchy = 'create_time'  # 根据创建时间划分等级
     ordering = ['-create_time', ]  # 默认按照最新时间排序
-    search_fields = ('username', 'context')  # 设置搜索栏范围，如果有外键，要注明外键的哪个字段，双下划线
+    search_fields = ('username', 'context', 'create_time')  # 设置搜索栏范围，如果有外键，要注明外键的哪个字段，双下划线
     search_help_text = '搜索用户'  # 搜索提示文本， 默认为False
