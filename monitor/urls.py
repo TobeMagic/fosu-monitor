@@ -18,13 +18,10 @@ from django.urls import path, include
 from myaccount.views import CustomPasswordResetView
 from Tieba import views
 from Weibo import views
-from allauth.account.urls import urlpatterns as allauth_url
 
 urlpatterns = [
     path('', admin.site.urls),
     path('accounts/password/reset/', CustomPasswordResetView.as_view(), name="account_reset_password"),
-    allauth_url[2:5],  # logout change_password password_set account_inactive
-    allauth_url[10:12],  # password_reset_done password_reset_from_key password_reset_from_key_done
     path('accounts/', include('myaccount.urls')),
 ]
 
