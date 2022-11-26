@@ -18,11 +18,11 @@ from django.urls import path, include
 from myaccount.views import CustomPasswordResetView
 from Tieba import views
 from Weibo import views
-
 urlpatterns = [
     path('', admin.site.urls),
     path('accounts/password/reset/', CustomPasswordResetView.as_view(), name="account_reset_password"),
     path('accounts/', include('myaccount.urls')),
+    path('accounts/',include('allauth.account.urls'))
 ]
 
 admin.site.site_header = "佛山科学技术学院舆情监测平台"
