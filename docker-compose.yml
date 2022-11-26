@@ -4,6 +4,7 @@ services:
   app:
     restart: always
     build: .
+    container_name: monitor_app
     command: bash -c "python3 manage.py collectstatic --no-input && python3 manage.py migrate && gunicorn --timeout=30 --workers=4 --bind :8080 monitor.wsgi:application"
     volumes:
       - .:/code
@@ -12,12 +13,13 @@ services:
       - "8080"
     depends_on:
       - db
-      - monitor-chrome
+      - chrome
     networks:
       - web_network
       - db_network
   db:
     image: mysql:5.7
+    container_name: monitor_db
     volumes:
       - "./mysql:/var/lib/mysql"
       - "./config/mysql/Monitor.cnf:/etc/mysql/conf.d/mysql.cnf"
@@ -30,11 +32,12 @@ services:
       - MYSQL_DATABASE=Monitor
     networks:
       - db_network
-  monitor-chrome:
+  chrome:
     image: selenium/node-chrome:4.3.0-20220726
     shm_size: 2gb
+    container_name: monitor_chrome
     depends_on:
-      - monitor-selenium-hub
+      - selenium-hub
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -42,9 +45,9 @@ services:
     networks:
       - db_network
 
-  monitor-selenium-hub:
+  selenium-hub:
       image: selenium/hub:4.3.0-20220726
-      container_name: selenium-hub
+      container_name: monitor_selenium-hub
       ports:
 #        - "4442:4442"
 #        - "4443:4443"
