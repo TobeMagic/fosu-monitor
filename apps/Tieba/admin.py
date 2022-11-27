@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import *
-import re
+from django.http import HttpResponse
+import codecs, csv, re
+from utils.util import write_csv
+from datetime import datetime
 
 
-#
 # # 嵌入外键
 class TiebaCommentInline(admin.StackedInline):
     model = BaiduComment
@@ -34,6 +36,7 @@ class BaiduUserAdmin(admin.ModelAdmin):
     search_help_text = '搜索用户'  # 搜索提示文本， 默认为False
     list_filter = ['create_time', ]
     inlines = [TiebaCommentInline, ]
+    actions = ['export_model_as_csv', ]
 
     def url_tag(self, obj):
         if obj.url:
@@ -42,6 +45,25 @@ class BaiduUserAdmin(admin.ModelAdmin):
         return '-'
 
     url_tag.short_description = '贴吧用户地址'
+
+    exportable_fields = ['username', 'url', 'create_time']
+
+    def export_model_as_csv(self, request: object, queryset: object) -> object:
+        response = HttpResponse(content_type='text/csv')
+        # 写入BOM头，不然导出会乱码
+        response.write(codecs.BOM_UTF8)
+        response['Content-Disposition'] = 'attachment; filename=%s-list-%s.csv' % (
+            'export',
+            datetime.now().strftime('%Y-%m-%d-%H-%M-%S'),
+        )
+
+        # 写入表头
+        writer = csv.writer(response)
+        write_csv(writer, self.exportable_fields, queryset)
+
+        return response
+
+    export_model_as_csv.short_description = "导出为csv格式"
 
 
 @admin.register(BaiduPost)
@@ -56,7 +78,7 @@ class BaiduPostAdmin(admin.ModelAdmin):
     date_hierarchy = 'create_time'  # 根据创建时间划分等级
     ordering = ['-create_time', ]  # 默认按照最新时间排序
     inlines = [TiebaCommentInline, ]
-
+    actions = ['export_model_as_csv', ]
     list_filter = ['create_time', ]
 
     def img_tag(self, obj):
@@ -78,6 +100,25 @@ class BaiduPostAdmin(admin.ModelAdmin):
 
     url_tag.short_description = "帖子地址"
 
+    exportable_fields = ['title', 'url', 'create_time']
+
+    def export_model_as_csv(self, request: object, queryset: object) -> object:
+        response = HttpResponse(content_type='text/csv')
+        # 写入BOM头，不然导出会乱码
+        response.write(codecs.BOM_UTF8)
+        response['Content-Disposition'] = 'attachment; filename=%s-list-%s.csv' % (
+            'export',
+            datetime.now().strftime('%Y-%m-%d-%H-%M-%S'),
+        )
+
+        # 写入表头
+        writer = csv.writer(response)
+        write_csv(writer, self.exportable_fields, queryset)
+
+        return response
+
+    export_model_as_csv.short_description = "导出为csv格式"
+
 
 @admin.register(BaiduComment)
 class BaiduCommentAdmin(admin.ModelAdmin):
@@ -90,3 +131,22 @@ class BaiduCommentAdmin(admin.ModelAdmin):
     date_hierarchy = 'create_time'  # 根据创建时间划分等级
     ordering = ['-create_time', ]  # 默认按照最新时间排序
     list_filter = ['create_time', ]
+    actions = ['export_model_as_csv', ]
+    exportable_fields = ['BaiduPost', 'BaiduUser', 'comment', 'create_time']
+
+    def export_model_as_csv(self, request: object, queryset: object) -> object:
+        response = HttpResponse(content_type='text/csv')
+        # 写入BOM头，不然导出会乱码
+        response.write(codecs.BOM_UTF8)
+        response['Content-Disposition'] = 'attachment; filename=%s-list-%s.csv' % (
+            'export',
+            datetime.now().strftime('%Y-%m-%d-%H-%M-%S'),
+        )
+
+        # 写入表头
+        writer = csv.writer(response)
+        write_csv(writer, self.exportable_fields, queryset)
+
+        return response
+
+    export_model_as_csv.short_description = "导出为csv格式"
