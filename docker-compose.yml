@@ -5,12 +5,12 @@ services:
     restart: always
     build: .
     container_name: monitor_app
-    command: bash -c "python3 manage.py collectstatic --no-input && python3 manage.py migrate && gunicorn --timeout=30 --workers=4 --bind :8080 monitor.wsgi:application"
+    command: bash -c "python3 manage.py collectstatic --no-input && python3 manage.py migrate && gunicorn --timeout=30 --workers=4 --bind :90 monitor.wsgi:application"
     volumes:
       - .:/code
       - static-volume:/code/static
     expose:
-      - "8080"
+      - "90"
     depends_on:
       - db
       - chrome
@@ -52,7 +52,7 @@ services:
 #        - "4442:4442"
 #        - "4443:4443"
 #        - "4444:4444"
-        - "8080:4444"
+        - "9000:4444"
       networks:
         - db_network
 
@@ -60,7 +60,7 @@ services:
     restart: always
     image: nginx:latest
     ports:
-      - "9000:8080"
+      - "90:90"
     volumes:
       - static-volume:/code/static
       - ./config/nginx:/etc/nginx/conf.d
