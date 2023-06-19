@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 SECRET_KEY = 'django-insecure-lo^w!p68a*k&rpeo_n@gfuz+f%*m62b^%7a-j&7z%!291&9$l_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -57,7 +57,7 @@ SITE_ID = 1
 
 # simpleUI 主题配置
 SIMPLEUI_DEFAULT_THEME = 'e-red.css'
-SIMPLEUI_LOGO = 'https://hakaimg.com/i/2022/11/25/4up8oj2.png'
+SIMPLEUI_LOGO = 'https://s2.loli.net/2023/06/19/IXVDJlujFgfBL3N.png'
 SIMPLEUI_ICON = {
     '微博': 'fa fa-comment',
     'Weibo': 'fa fa-comment',
